@@ -21,6 +21,7 @@ var g_slowBallUpdate = false;
 var g_finalScore1=0;
 var g_finalScore2=0;
 var g_winner = "none";
+var g_resetGame = false;
 
 function handleKeydown(evt) {
     g_keys[evt.keyCode] = true;
@@ -43,6 +44,8 @@ function eatKey(keyCode) {
 
 window.addEventListener("keydown", handleKeydown);
 window.addEventListener("keyup", handleKeyup);
+document.getElementById("startButton").addEventListener("click", startGame);
+document.getElementById("resetButton").addEventListener("click", resetGame);
 
 // ============
 // PADDLE STUFF
@@ -55,6 +58,18 @@ function Paddle(descr) {
     for (var property in descr) {
         this[property] = descr[property];
     }
+}
+
+function startGame(){
+    g_isUpdatePaused=false;
+    document.getElementById("resetButton").style.display="inline";
+    document.getElementById("startButton").style.display="none";
+}
+
+function resetGame(){
+    g_resetGame=true;
+    document.getElementById("resetButton").style.display="none";
+    document.getElementById("startButton").style.display="inline";
 }
 
 // Add these properties to the prototype, where they will serve as
@@ -304,15 +319,15 @@ function Ball(descr) {
 Ball.prototype.radius = 10;
 
 var g_ballFast = new Ball({
-    cx: 50,
-    cy: 200,
+    cx: 200,
+    cy: 150,
     xVel: 5,
     yVel: 4
 });
 
 var g_ballSlow = new Ball({
-    cx: 150,
-    cy: 200,
+    cx: 200,
+    cy: 250,
     xVel: 5,
     yVel: 4
 });
@@ -404,7 +419,7 @@ function updateSimulation() {
 var KEY_PAUSE = 'P'.charCodeAt(0);
 var KEY_STEP = 'O'.charCodeAt(0);
 
-var g_isUpdatePaused = false;
+var g_isUpdatePaused = true;
 
 function shouldSkipUpdate() {
     if (eatKey(KEY_PAUSE)) {
@@ -438,6 +453,21 @@ function mainIter() {
         gatherInputs();
         updateSimulation();
         renderSimulation(g_ctx);
+        if (g_resetGame){
+            console.log("in here");
+            g_paddle1.SCORE=0;
+            g_paddle2.SCORE=0;
+            g_finalScore1=0;
+            g_finalScore2=0;
+            g_winner = "none";
+            g_isUpdatePaused=true;
+            g_resetGame=false;
+            g_ballSlow.cx=200;
+            g_ballSlow.cy=150;
+            g_ballFast.cx=200;
+            g_ballFast.cy=250;
+
+            }
     } else {
         window.clearInterval(intervalID);
     }
