@@ -1,0 +1,23 @@
+body{
+	background-image:url("img/pattern.png");
+	text-align: center;
+}
+
+canvas{
+	background-color: white;
+}
+
+h1{
+	text-align: center;
+	margin: 0;
+	position: relative;
+}
+
+.jumbotron{
+	background-color: black;
+	color: white;
+	height: 100px;
+	padding: 0;
+}
+
+
