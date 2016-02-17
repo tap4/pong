@@ -8,18 +8,36 @@
 	<link href="PONG.css" rel="stylesheet">
 </head>
 <body>
+	<div class="hidden">
+	<script type="text/javascript">
+		<!--//--><![CDATA[//><!--
+			var images = new Array()
+			function preload() {
+				for (i = 0; i < preload.arguments.length; i++) {
+					images[i] = new Image()
+					images[i].src = preload.arguments[i]
+				}
+			}
+			preload(
+				"https://notendur.hi.is/~tap4/projects/pong/img/pattern.png",
+				"https://notendur.hi.is/~tap4/projects/pong/img/blueKeys.png",
+				"https://notendur.hi.is/~tap4/projects/pong/img/greenKeys.png"
+			)
+		//--><!]]>
+	</script>
+</div>
 	<div class="jumbotron">
 		<h1>PONG</h1>
 	</div>
 		<button class="btn btn-success" id="startButton">START</button>
 		<button class="btn btn-warning" id="resetButton">RESET</button>
 	<div class="col-sm-10 col-sm-offset-1">
-		<img src="img/blueKeys.png">
+		<img src="https://notendur.hi.is/~tap4/projects/pong/img/blueKeys.png">
 		<canvas id="myCanvas" width="400" height="400" 
 			style="border:1px solid black;">
 			Sorry, your browser does not support the HTML5 canvas tag.
 		</canvas>
-		<img src="img/greenKeys.png">
+		<img src="https://notendur.hi.is/~tap4/projects/pong/img/blueKeys.png">
 	</div>
 	<script src="PONG.js"></script>
 
