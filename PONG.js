@@ -454,7 +454,6 @@ function mainIter() {
         updateSimulation();
         renderSimulation(g_ctx);
         if (g_resetGame){
-            console.log("in here");
             g_paddle1.SCORE=0;
             g_paddle2.SCORE=0;
             g_finalScore1=0;

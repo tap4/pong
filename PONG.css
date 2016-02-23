@@ -4,9 +4,10 @@ body{
 	text-align: center;
 }
 
-canvas{
+#myCanvas{
 	background-color: white;
 	margin-top: 20px;
+	border: 5px solid black;
 }
 
 h1{
